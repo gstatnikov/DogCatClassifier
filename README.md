@@ -1,18 +1,22 @@
 # DogCatClassifier
 
-This repository contains a machine learning model designed to classify images as either a dog or a cat. It demonstrates the complete workflow for binary image classification, including data preprocessing, model training, evaluation, and visualization of results.
+This repository contains a machine learning model designed to classify images as either a dog or a cat. It leverages transfer learning with ResNet50 for efficient and accurate image classification, demonstrating a complete workflow including data preprocessing, model training, evaluation, and visualization of results.
 
 ## Features
 
 - 🐶 **Image Classification**: Predicts whether an image contains a dog or a cat
+- 🔄 **Transfer Learning**: Utilizes pre-trained ResNet50 architecture
 - 🛠️ **Data Preprocessing**: Includes resizing, normalization, and augmentation of images
-- 🧠 **Deep Learning Model**: Implements a convolutional neural network (CNN) for feature extraction and classification
+- 📈 **Advanced Training**: Implements early stopping, learning rate scheduling, and model checkpointing
 
 ## Technologies Used
 
 - **Python**: Core programming language
 - **TensorFlow/Keras**: For building and training the neural network
-- **NumPy** and **Pandas**: For data manipulation and analysis
+- **ResNet50**: Pre-trained model for transfer learning
+- **NumPy**: For data manipulation
+- **Matplotlib**: For visualization
+
 ## How to Use
 
 ### 1. Clone the Repository
@@ -30,6 +34,7 @@ Ensure you have Python installed, then install the required libraries:
 pip install -r requirements.txt
 ```
 
+
 ### 3. Run the Notebook
 
 Open `image.ipynb` in Jupyter Notebook or JupyterLab, and execute the cells step-by-step to train and evaluate the model.
@@ -41,22 +46,27 @@ Modify the prediction cell in the notebook to input your own image and see the r
 ## Dataset
 
 This project uses the Kaggle Dogs vs Cats dataset. You can download the dataset from [here](https://drive.google.com/drive/u/0/folders/1TKiijJhrSgfr13NUABs9daChpyzgEgwJ).
-Ensure the dataset is placed in the appropriate folder structure as outlined below:
+The data should be organized in CSV format with corresponding image data and labels.
 
-```
-/data
-    /train
-        /dogs
-        /cats
-    /test
-        /dogs
-        /cats
-```
+## Model Architecture
+
+The model uses a transfer learning approach with the following architecture:
+- ResNet50 base (pre-trained on ImageNet)
+- Global Average Pooling
+- Dense layers with dropout and batch normalization
+- Binary classification output
+
+Key features:
+- Data augmentation for improved generalization
+- Early stopping to prevent overfitting
+- Learning rate reduction on plateau
+- Model checkpointing to save best weights
 
 ## Results
 
-- Achieved [83.51]% accuracy on the test set
-- Includes visualization of training metrics (accuracy and loss) and sample predictions
+- Achieved 93% accuracy on the test set
+- AUC score of 0.985
+- Robust performance through transfer learning
 
 ## Contributing
 
